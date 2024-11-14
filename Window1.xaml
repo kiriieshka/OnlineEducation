@@ -1,0 +1,233 @@
+﻿<Window xmlns:customcontrols="clr-namespace:OnlineEducation.customcontrols"  x:Class="OnlineEducation.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnlineEducation"
+        mc:Ignorable="d" x:Name="Nothing"
+        Title="Window2" Height="735" Width="1024" FontSize="15" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/assets/icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border CornerRadius="20" Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="330"/>
+            </Grid.ColumnDefinitions>
+
+            <Line HorizontalAlignment="Right" Y1="0" Y2="{Binding Height, ElementName=this}" StrokeThickness=".5" Stroke="#E5E7E6"/>
+
+
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,55">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Path Data="{StaticResource logo}" Fill="#F7542E" Stretch="Uniform"/>
+                <TextBlock Grid.Column="1"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="7,0,0,0">
+                    <Run Text="Online"/>
+                    <Run Foreground="#FFF75732" FontWeight="Bold" Text="Education"/>
+                </TextBlock>
+            </Grid>
+
+            <Border CornerRadius="10" 
+        Background="WhiteSmoke"
+        HorizontalAlignment="Center"
+        Height="120"
+        Margin="0,255,0,0"
+        VerticalAlignment="Top"
+        Width="180">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+
+                    <customcontrols:MenuButtons
+                        x:Name="HomeButton1"
+                        Icon="{StaticResource home}"
+                        IconWidth="10"
+                        IndicatorBrush="#BEBEBE" 
+                        Text="Главная страница"
+                        IsSelected="True"
+                        GroupName="MenuButtons" Height="33"/>
+                    <customcontrols:MenuButtons
+                        x:Name="ProgressButton1"
+                        Icon="{StaticResource progress}"
+                        IconWidth="10"
+                        IndicatorBrush="#BEBEBE" 
+                        Text="Оценочная ведомость"
+                        GroupName="MenuButtons" Height="34"/>
+
+                    <customcontrols:MenuButtons
+                        x:Name="GroupButton1"
+                        Icon="{StaticResource plus}"
+                        IconWidth="10"
+                        IndicatorBrush="#BEBEBE" 
+                        Text="Группа"
+                        GroupName="MenuButtons" Height="34"/>
+
+                </StackPanel>
+            </Border>
+
+            <Border CornerRadius="12" Grid.Column="1" HorizontalAlignment="Left" Height="716" Margin="5,0,0,0" VerticalAlignment="Center" Width="809" Grid.ColumnSpan="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="/assets/2.jpg" Stretch="UniformToFill"/>
+                </Border.Background>
+                <Grid>
+                    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,21,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle 
+                                                RadiusX="10" 
+                                                RadiusY="10" 
+                                                Height="51" 
+                                                Width="54" 
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top" Margin="-10,-10,0,0" Grid.ColumnSpan="2">
+                            <Rectangle.Fill>
+                                <ImageBrush 
+                                                        ImageSource="/assets/user1.jpg"
+                                                        Stretch="UniformToFill"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Grid Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,60,0,0"/>
+
+
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Height="66" Width="177"/>
+                    <Rectangle Fill="White"
+    StrokeThickness="3"
+    RadiusX="50"
+    RadiusY="50" Margin="769,18,16,674" />
+                    <Rectangle Fill="White"
+                        StrokeThickness="3"
+                        RadiusX="10"
+                        RadiusY="10" Margin="780,0,-6,674" />
+                    <Rectangle Fill="White"
+                        StrokeThickness="3"
+                        RadiusX="10"
+                        RadiusY="10" Margin="769,-6,0,686" />
+                    <DataGrid x:Name="ScheduleDataGrid" AutoGenerateColumns="False" 
+      HeadersVisibility="Column" CanUserAddRows="True" 
+      CanUserDeleteRows="True" CanUserResizeColumns="True" 
+      RowHeaderWidth="0" Margin="0,68,-4,-2" SelectionChanged="ScheduleDataGrid_SelectionChanged" BorderBrush="White" Background="{x:Null}" IsSynchronizedWithCurrentItem="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Время" Binding="{Binding Time}" Width="140"/>
+                            <DataGridTextColumn Header="Понедельник" Binding="{Binding Monday}" Width="145"/>
+                            <DataGridTextColumn Header="Вторник" Binding="{Binding Tuesday}" Width="140"/>
+                            <DataGridTextColumn Header="Среда" Binding="{Binding Wednesday}" Width="140"/>
+                            <DataGridTextColumn Header="Четверг" Binding="{Binding Thursday}" Width="140"/>
+                            <DataGridTextColumn Header="Пятница" Binding="{Binding Friday}" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="Расписание" FontSize="40" FontWeight="SemiBold" 
+       HorizontalAlignment="Center" Margin="0,3,0,659" Foreground="White"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="1"
+                       VerticalAlignment="Bottom" Margin="55,0,25,195">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <Grid Grid.Column="2" VerticalAlignment="Top"
+                Margin="24,58,47,0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="24,93,47,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="54"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Button x:Name="CloseButton3"
+Content="🙂"  
+FontSize="20"
+Click="Close_Click1"
+HorizontalAlignment="Left"
+VerticalAlignment="Top"
+Foreground="White"
+Background="#FFC94249"
+BorderThickness="0"
+Width="32"
+Height="34"
+Margin="288,9.5,0,0"
+Grid.Column="2"
+RenderTransformOrigin="0.507,0.414">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FFC94249"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Width" Value="32"/>
+                        <Setter Property="Height" Value="34"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                        CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <!-- Триггер изменения цвета при наведении -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Coral"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Сохранить расписание" Width="215" Height="48" 
+        HorizontalAlignment="Left" Click="SaveScheduleButton_Click" 
+        Grid.Column="2" Margin="105,677.5,0,0" VerticalAlignment="Top">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FFC94249"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,0,1,0">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <!-- Триггер изменения цвета при наведении -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Coral"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
